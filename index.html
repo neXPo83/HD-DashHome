@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD DashHome Premium - Funzionalità Ufficiali</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #2b3035;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Colori Variabili per HD DashHome */
+        :root {
+            --dash-dark: #111827;
+            --dash-darker: #0b0f19;
+            --dash-accent: #00E5FF;
+            --dash-accent-hover: #00b8cc;
+            --dash-text-muted: #6b7280;
+        }
+
+        /* Barra di Navigazione Superiore */
+        .top-nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 20px;
+            display: block;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            color: var(--dash-dark);
+            text-decoration: none;
+            font-size: 10.5pt;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--dash-accent-hover);
+        }
+
+        /* Header Decorativo (Stile Autoradio Premium) */
+        .header-banner {
+            background: linear-gradient(135deg, var(--dash-darker) 0%, var(--dash-dark) 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 70px 20px;
+            border-bottom: 5px solid var(--dash-accent);
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.15);
+        }
+
+        .header-banner h1 {
+            margin: 0;
+            font-size: 32pt;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header-banner p {
+            margin: 15px 0 0 0;
+            font-size: 15pt;
+            color: #9ca3af;
+            font-weight: 300;
+        }
+
+        /* Contenitore Principale */
+        .main-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* Intro della pagina */
+        .intro-section {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            margin-top: 0;
+            color: var(--dash-dark);
+            font-size: 20pt;
+        }
+
+        .intro-section p {
+            color: #4b5563;
+            font-size: 12pt;
+            margin-bottom: 0;
+        }
+
+        /* Griglia delle Funzionalità */
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-left: 6px solid var(--dash-accent);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+
+        /* EFFETTO HOVER MIGLIORATO */
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+            border-left-color: var(--dash-dark);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: var(--dash-dark);
+            font-size: 16pt;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card p {
+            margin: 0 0 15px 0;
+            color: #4b5563;
+            font-size: 11.5pt;
+        }
+
+        /* Badge tecnologici */
+        .badge-container {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #f3f4f6;
+            color: #374151;
+            font-size: 8.5pt;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .badge-ai {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border-color: #bae6fd;
+        }
+
+        .badge-sys {
+            background-color: #fef3c7;
+            color: #b45309;
+            border-color: #fde68a;
+        }
+
+        /* Sezione Download Play Store */
+        .download-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 40px 30px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .download-section h2 {
+            margin-top: 0;
+            color: var(--dash-dark);
+            font-size: 20pt;
+            font-weight: 800;
+        }
+
+        .download-section p {
+            color: #4b5563;
+            font-size: 11.5pt;
+            margin-bottom: 25px;
+        }
+
+        .playstore-button-placeholder {
+            display: inline-block;
+            background-color: var(--dash-dark);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12pt;
+            border: 2px solid var(--dash-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .playstore-button-placeholder:hover {
+            background-color: transparent;
+            color: var(--dash-dark);
+        }
+
+        /* Navigazione di Fine Pagina */
+        .bottom-actions {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--dash-dark);
+            padding: 12px 24px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 11pt;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            background-color: #f3f4f6;
+            border-color: #d1d5db;
+        }
+
+        /* Footer */
+        .footer-page {
+            text-align: center;
+            padding: 40px 20px;
+            color: #9ca3af;
+            font-size: 10pt;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <div class="nav-container">
+            <a href="https://nexpo83.github.io/nexposstudio/#" class="back-link">← Torna alla Home di neXPo's Studio</a>
+        </div>
+    </div>
+
+    <div class="header-banner">
+        <h1>HD DashHome</h1>
+        <p>L'Infotainment Definitivo per la tua Autoradio Android</p>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="intro-section">
+            <h2>Non il solito Car Launcher.</h2>
+            <p>
+                HD DashHome è un ecosistema completo studiato per la sicurezza alla guida e l'intrattenimento di lusso. 
+                Sincronizza in tempo reale la navigazione 3D vettoriale, i testi musicali, e intercetta direttamente i comandi 
+                fisici del volante della tua auto, offrendo un'esperienza paragonabile ai sistemi di serie delle auto premium.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🗺️ Navigazione 3D Turn-by-Turn Next-Gen</h3>
+            <p>
+                Integra il motore vettoriale Cloud di Google Maps con visualizzazione degli edifici in 3D. 
+                Il nostro motore Turn-by-Turn personalizzato proietta le indicazioni a scorrimento animato, mostra 
+                la freccia direzionale "spalmata" sull'asfalto e calcola i pedaggi autostradali al centesimo prima della partenza.
+            </p>
+            <div class="badge-container">
+                <span class="badge">Google Routes API</span>
+                <span class="badge badge-ai">Cloud Map Styling</span>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>🎨 Motore Camaleonte & Tematizzazione Automatica</h3>
+            <p>
+                L'interfaccia si adatta alla tua musica. L'algoritmo estrae la palette colori dalla copertina 
+                dell'album in riproduzione e dipinge morbidamente l'interfaccia. Tramite i dati astronomici del GPS (Alba e Tramonto), 
+                il sistema passa autonomamente dal Tema Chiaro al Tema Notturno in modo fluido e senza ricaricamenti.
+            </p>
+            <div class="badge-container">
+                <span class="badge">Android Palette API</span>
+                <span class="badge">GPS Sun-Tracking</span>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>🎤 Motore Testi Sincronizzati (LRC)</h3>
+            <p>
+                Il media player intercetta YouTube Music, Spotify e decine di altre app. Ricerca istantaneamente 
+                i testi in formato LRC sul web e li mostra a schermo scorrendo in perfetta sincronia con la voce del cantante. 
+                Il Flip-3D del lettore musicale permette di passare dalla copertina al testo con una fluida animazione.
+            </p>
+            <div class="badge-container">
+                <span class="badge">MediaSession API</span>
+                <span class="badge">LyricS OVH Engine</span>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>🛞 Cacciatore di Tasti (Supporto MCU Cinesi)</h3>
+            <p>
+                Pieno supporto per le autoradio Android Aftermarket (FYT, Microntek, TS, Klyde). HD DashHome 
+                si mette in ascolto dei segnali broadcast hardware provenienti dal Canbus, permettendoti di rimappare 
+                qualsiasi tasto del volante per azioni custom come: Avvio Navigazione, Lettura Messaggi o Cambio Vista Mappa.
+            </p>
+            <div class="badge-container">
+                <span class="badge">Hardware Intercept</span>
+                <span class="badge badge-sys">CanBus Support</span>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>💬 Gestione Messaggi e Audio Ducking</h3>
+            <p>
+                Quando ricevi un messaggio WhatsApp o Telegram, il pannello notifiche a scomparsa ti permette di 
+                chiederne la lettura ad alta voce. Il motore Audio Focus abbasserà dolcemente il volume della musica (Ducking), 
+                ti leggerà il testo tramite TTS e ti permetterà di dettare la risposta senza mai staccare le mani dal volante.
+            </p>
+            <div class="badge-container">
+                <span class="badge">Speech Recognizer</span>
+                <span class="badge">Audio Focus Flow</span>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>🚨 Integrazione Autovelox & Limiti di Velocità</h3>
+            <p>
+                Interroga silenziosamente il database Overpass API / TomTom in background per ricavare il limite di velocità 
+                reale della strada che stai percorrendo. Comunica con le app Radar esterne (es. Radarbot) portandole 
+                in primo piano o gestendo i loro alert sonori direttamente sull'interfaccia principale.
+            </p>
+            <div class="badge-container">
+                <span class="badge">TomTom API</span>
+                <span class="badge">Overpass OSM</span>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2>Pronto a Trasformare la tua Auto?</h2>
+            <p>Scarica HD DashHome sul Play Store per sbloccare l'esperienza Premium di Infotainment.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.nexpo.hddashhome.premium" class="playstore-button-placeholder">
+                ▶️ Scarica su Google Play
+            </a>
+        </div>
+
+        <div class="bottom-actions">
+            <a href="https://nexpo83.github.io/nexposstudio/#" class="btn-home">← Torna alla lista delle applicazioni</a>
+        </div>
+
+    </div>
+
+    <div class="footer-page">
+        <p>&copy; 2026 neXPo's Studio. Sviluppato per Android Automotive & Head Units.</p>
+    </div>
+
+</body>
+</html>
