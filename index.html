@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>HD DashHome Premium - Funzionalità Ufficiali</title>
     <style>
         *, *::before, *::after {
@@ -17,6 +18,9 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            /* FONDAMENTALE: Annulla l'offset che Google cerca di imporre */
+            top: 0 !important;
+            position: static !important;
         }
 
         /* Colori Variabili per HD DashHome */
@@ -33,7 +37,6 @@
             background-color: #ffffff;
             border-bottom: 1px solid #e5e7eb;
             padding: 15px 20px;
-            display: block;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -42,6 +45,9 @@
         .nav-container {
             max-width: 900px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .back-link {
@@ -257,15 +263,107 @@
             border-top: 1px solid #e5e7eb;
             margin-top: 50px;
         }
+
+        /* ========================================= */
+        /* FIX DEFINITIVO GOOGLE TRANSLATE           */
+        /* ========================================= */
+
+        .skiptranslate iframe,
+        .goog-te-banner-frame { 
+            position: fixed !important;
+            top: -500px !important;
+            left: -500px !important;
+            width: 1px !important;
+            height: 1px !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        } 
+
+        #goog-gt-tt, .goog-te-balloon-frame { 
+            display: none !important; 
+            visibility: hidden !important; 
+        }
+
+        .goog-text-highlight { 
+            background-color: transparent !important; 
+            box-shadow: none !important; 
+            pointer-events: none !important; 
+        }
+
+        .skiptranslate > font {
+            display: none !important;
+        }
+
+        #google_translate_element {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        /* ========================================= */
+        /* STILE DEL NOSTRO MENU (Adattato Tema Chiaro) */
+        /* ========================================= */
+        .custom-language-selector {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .custom-language-selector select {
+            background-color: #ffffff;
+            color: var(--dash-dark);
+            border: 1px solid #e5e7eb;
+            padding: 6px 30px 6px 12px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 10pt;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            /* Freccia scura per il tema chiaro */
+            background-image: url("data:image/svg+xml;utf8,<svg fill='%23111827' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: 50%;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-language-selector select:hover {
+            border-color: var(--dash-accent);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.15);
+        }
+
+        .custom-language-selector select option {
+            background-color: #ffffff;
+            color: var(--dash-dark);
+        }
     </style>
 </head>
 <body>
 
     <div class="top-nav">
         <div class="nav-container">
+            <div class="custom-language-selector">
+                <select id="my-custom-lang" onchange="cambiaLingua(this.value)">
+                    <option value="">🌍 Lingua</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                </select>
+            </div>
+
             <a href="https://nexpo83.github.io/nexposstudio/#" class="back-link">← Torna alla Home di neXPo's Studio</a>
         </div>
     </div>
+
+    <div id="google_translate_element"></div>
 
     <div class="header-banner">
         <h1>HD DashHome</h1>
@@ -445,6 +543,48 @@
     <div class="footer-page">
         <p>&copy; 2026 neXPo's Studio. Sviluppato per Android Automotive & Head Units.</p>
     </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'it',
+                includedLanguages: 'en,es,fr,de,it',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function cambiaLingua(lang) {
+            if (lang === "") return;
+            var selectGoogle = document.querySelector('select.goog-te-combo');
+            if (selectGoogle) {
+                selectGoogle.value = lang;
+                var event = document.createEvent("HTMLEvents");
+                event.initEvent("change", true, true);
+                selectGoogle.dispatchEvent(event);
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new MutationObserver(function(mutations) {
+                if (document.body.style.top !== '0px' && document.body.style.top !== '') {
+                    document.body.style.setProperty('top', '0px', 'important');
+                }
+                const banner = document.querySelector('.goog-te-banner-frame');
+                if (banner) {
+                    banner.style.setProperty('display', 'none', 'important');
+                    banner.style.setProperty('height', '0px', 'important');
+                }
+            });
+
+            observer.observe(document.body, { 
+                attributes: true, 
+                attributeFilter: ['style'] 
+            });
+        });
+    </script>
 
 </body>
 </html>
