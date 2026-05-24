@@ -150,13 +150,24 @@
 
         .feature-card h3 {
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             color: var(--dash-dark);
             font-size: 16pt;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        /* Stile per le immagini dentro le card */
+        .feature-image {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: block;
         }
 
         .feature-card p {
@@ -483,7 +494,7 @@
             </div>
         </div>
         
-                <div class="feature-card">
+        <div class="feature-card">
             <h3>🛡️ Spallata Nucleare (Bypass ZLink)</h3>
             <p>
                 Molte autoradio cinesi forzano l'apertura di app native (come ZLink o la Radio FM) al risveglio dal Deep Sleep. Il nostro servizio in background attende il momento esatto dell'accensione dello schermo per sferrare una "spallata", riportando istantaneamente HD DashHome e i tuoi servizi in primo piano.
@@ -492,9 +503,9 @@
                 <span class="badge">Intent Reorder</span>
                 <span class="badge badge-sys">Deep Sleep Wake</span>
             </div>
-                </div>
+        </div>
 
-                <div class="feature-card">
+        <div class="feature-card">
             <h3>📱 App Drawer & Gestione Pinch-to-Zoom</h3>
             <p>
                 Sostituisce completamente il Launcher di fabbrica. Include un App Drawer intelligente con barra dei preferiti e menu a pillola a comparsa (pressione lunga). La grandezza delle icone della griglia non è fissa: usa due dita (Pinch-to-Zoom) per ridimensionarle fluidamente dal 50% al 200% in base alle dimensioni del tuo schermo.
@@ -503,9 +514,9 @@
                 <span class="badge">Custom Launcher</span>
                 <span class="badge badge-sys">Dynamic Scaling</span>
             </div>
-                </div>
+        </div>
 
-                <div class="feature-card">
+        <div class="feature-card">
             <h3>🅿️ Trova Auto & Condivisione QR Code</h3>
             <p>
                 A destinazione raggiunta, il sistema salva automaticamente le coordinate del parcheggio. Con un tap, HD DashHome genera localmente un codice QR: inquadralo con il telefono per inviare istantaneamente la posizione della tua auto su WhatsApp o salvarla su Google Maps.
@@ -514,10 +525,11 @@
                 <span class="badge">ZXing Engine</span>
                 <span class="badge">Local Data Storage</span>
             </div>
-                </div>
+        </div>
 
-                <div class="feature-card">
+        <div class="feature-card">
             <h3>📍 Route Optimizer & Multi-Tappa</h3>
+            <img src="schermata-percorso.png" alt="Schermata HD DashHome Route Optimizer" class="feature-image" onerror="this.style.display='none'">
             <p>
                 Costruisci itinerari complessi aggiungendo fino a 5 tappe intermedie. Con la modalità Ottimizzazione attiva, l'algoritmo riordina automaticamente i tuoi Waypoint calcolando il percorso più veloce in base al traffico in tempo reale, ai pedaggi e ai tempi di percorrenza incrociati.
             </p>
@@ -525,10 +537,10 @@
                 <span class="badge">Distance Matrix API</span>
                 <span class="badge badge-ai">Smart Routing</span>
             </div>
-                </div>
+        </div>
 
 
-                <div class="feature-card">
+        <div class="feature-card">
             <h3>🎲 Radio Magica Universale</h3>
             <p>
                 Non sai cosa ascoltare? Il tasto "Dado" riconosce l'app musicale predefinita (Spotify, YouTube Music, Deezer, Amazon Music) e invia comandi hardware o Intent invisibili per far partire immediatamente le tue playlist "Discovery", "Flow" o "Supermix" senza dover toccare lo schermo.
@@ -537,7 +549,7 @@
                 <span class="badge">MediaControllerCompat</span>
                 <span class="badge badge-sys">Intent Routing</span>
             </div>
-                </div>
+        </div>
         
         <div class="download-section">
             <h2>Pronto a Trasformare la tua Auto?</h2>
